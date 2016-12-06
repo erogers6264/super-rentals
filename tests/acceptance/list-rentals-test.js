@@ -4,6 +4,10 @@ import moduleForAcceptance from 'super-rentals/tests/helpers/module-for-acceptan
 moduleForAcceptance('Acceptance | list rentals');
 
 test('should redirect to rentals route.', function(assert) {
+	visit('/');
+	andThen(() => {
+	  assert.equal(currentURL(), '/rentals', 'should redirect automatically');
+	});
 });
 
 test('should list available rentals.', function(assert) {
