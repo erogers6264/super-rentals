@@ -26,9 +26,21 @@ test('should link to information about the company.', function(assert) {
 });
 
 test('should link to contact information.', function(assert) {
+  visit('/');
+  click('a:contains("Contact")');
+  andThen(() => {
+    assert.equal(currentURL(), '/contact', 'should navigate to contact');
+  });
 });
 
 test('should filter the list of rentals by city.', function(assert) {
+  visit('/');
+  fillIn('.list-filter input', 'seattle');
+  keyEvent('.list-filter input', 'keyup', 69);
+  andThen(() => {
+    assert.equal(fint('.listing').length, 1, 'should show 1 listing');
+    assert.equal(fint('.listing .location:contains("Seattle")').length, 1, 'should contain 1 listing with location Seattle');
+  });
 });
 
 test('should show details for a specific rental', function(assert) {
