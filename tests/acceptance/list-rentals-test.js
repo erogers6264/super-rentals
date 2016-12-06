@@ -18,6 +18,11 @@ test('should list available rentals.', function(assert) {
 });
 
 test('should link to information about the company.', function(assert) {
+  visit('/');
+  click('a:contains("About")');
+  andThen(() => {
+    assert.equal(currentURL(), '/about', 'should navigate to about');
+  });
 });
 
 test('should link to contact information.', function(assert) {
