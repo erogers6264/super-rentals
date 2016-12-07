@@ -1,6 +1,9 @@
 {{yield}}
 <article class="listing">
-	<img src="{{rental.image}}" alt="">
+	<a href="" class="image {{if isWide "wide"}}">
+		<img src="{{rental.image}}" alt="">
+		<small>View Larger</small>
+	</a>
 	<h3>{{rental.title}}</h3>
 	<div class="detail owner">
 		<span>Owner:</span> {{rental.owner}}
